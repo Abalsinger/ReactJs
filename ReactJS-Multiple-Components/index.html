@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ReactJs - Hello World</title>
+    <script src="/js/react.min.js"></script>
+    <script src="/js/react-dom.min.js"></script>
+    <script src="/js/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="container"></div>
+    <div id="myComponentContainer"></div>
+
+    <script type="text/babel">
+        //Every component can only return ONE parent element
+        //Multiple html tags can only be returned when wrapped in a parent div
+        var MyComponent = React.createClass({
+            render: function() {
+                /*return (<h2>My Component Method</h2>
+                        <p>Lorem Ipsum World!</p>); */
+                //Will not work
+                return (
+                        <div>
+                            <h2>My Component Method</h2>
+                            <p>Lorem Ipsum World!</p>
+                        </div>);
+                //will work - because we are returning the parent div
+            }
+        });
+        ReactDOM.render(<div>
+                            <MyComponent />
+                            <MyComponent />
+                        </div>, document.getElementById('myComponentContainer'));
+        //the render function will also only return a parent div.
+        //ReactDOM.render(<MyComponent />,<MyComponent />,<MyComponent /> document.getElementById('myComponentContainer'));
+        //will not work
+    </script>
+
+</body>
+</html>
